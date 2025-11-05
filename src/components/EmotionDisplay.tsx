@@ -22,7 +22,11 @@ const EmotionDisplay = ({ emotion }: EmotionDisplayProps) => {
     );
   }
 
-  const config = emotionConfig[emotion.emotion as keyof typeof emotionConfig];
+  const config = emotionConfig[emotion.emotion as keyof typeof emotionConfig] || {
+    emoji: "🤔",
+    label: emotion.emotion.charAt(0).toUpperCase() + emotion.emotion.slice(1),
+    color: "text-foreground"
+  };
 
   return (
     <Card className="p-8 border-border bg-card/50 backdrop-blur">
